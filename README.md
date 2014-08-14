@@ -1,6 +1,6 @@
 # DaymetPy
 
-Functions to (batch) download single pixel [Daymet data](http://daymet.ornl.gov/) directly into your python workspace, or save them as csv files on your computer. Both a batch version as a single download version are provided. The routine is not restricted on the server side in the number of queries you make (unlike the client provided by ORNL itself). Consider downloading gridded data if you download extensive coverage within a single region.
+Functions to (batch) download single pixel [Daymet data](http://daymet.ornl.gov/) directly into your python workspace, or save them as csv files on your computer. Both a batch version as a single download version are provided. Consider downloading gridded data if you download extensive coverage within a single region.
 
 ## Installation
 

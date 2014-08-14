@@ -13,8 +13,7 @@ def download_Daymet(site="Daymet",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=
     # I'm not sure when new data is released so this might be a
     # very conservative setting, remove it if you see more recent data
     # on the website
-    if start_yr >= 1980 & end_yr <= max_year:
-        
+    if start_yr >= 1980 & end_yr <= max_year:        
     
         # if the year range is valid, create a string of valid years
         year_range = range(start_yr, end_yr)
