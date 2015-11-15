@@ -23,7 +23,7 @@ def download_Daymet(site="Daymet",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=
         year_range = year_range.replace(' ','')
 
         # create download string / url
-        download_string = "http://daymet.ornl.gov/data/send/saveData?lat=my_lat&lon=my_lon&measuredParams=tmax,tmin,dayl,prcp,srad,swe,vp&year=year_range"
+        download_string = "https://daymet.ornl.gov/data/send/saveData?lat=my_lat&lon=my_lon&measuredParams=tmax,tmin,dayl,prcp,srad,swe,vp&year=year_range"
   
         # substitute input variables in download string
         download_string = download_string.replace("my_lat",str(lat))
