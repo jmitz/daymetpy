@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os, sys ,csv, time, urllib
         
-def download_Daymet(site="Daymet",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=2012):
+def download_Daymet(site="Daymet",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=2012, as_dataframe=True):
     """
     Function to read download daymet data for a single pixel location
     """
@@ -40,6 +40,15 @@ def download_Daymet(site="Daymet",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=
             os.remove(daymet_file)
             raise NameError("You requested data is outside DAYMET coverage, the file is empty --> check coordinates!")
     
+        if as_dataframe:
+            import pandas as pd
+            df = pd.read_csv(daymet_file, header=6)
+            df.index = pd.to_datetime(df.year.astype(str) + '-' + df.yday.astype(str), format="%Y-%j")
+            df.columns = [c[:c.index('(')].strip() if '(' in c else c for c in df.columns ]
+            return df
+        else:
+            return daymet_file
+
     else:
         raise NameError("Year values are out of range!")
 
