@@ -1,4 +1,5 @@
 # DaymetPy
+forked from https://bitbucket.org/khufkens/daymetpy
 
 Functions to (batch) download single pixel [Daymet data](http://daymet.ornl.gov/) directly into your python workspace, or save them as csv files on your computer. Both a batch version as a single download version are provided. Consider downloading gridded data if you download extensive coverage within a single region.
 
