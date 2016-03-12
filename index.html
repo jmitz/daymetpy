@@ -31,6 +31,8 @@
         <h1>
 <a id="daymetpy" class="anchor" href="#daymetpy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DaymetPy</h1>
 
+<p>forked from <a href="https://bitbucket.org/khufkens/daymetpy">https://bitbucket.org/khufkens/daymetpy</a></p>
+
 <p>Functions to (batch) download single pixel <a href="http://daymet.ornl.gov/">Daymet data</a> directly into your python workspace, or save them as csv files on your computer. Both a batch version as a single download version are provided. Consider downloading gridded data if you download extensive coverage within a single region.</p>
 
 <h2>
@@ -38,20 +40,20 @@
 
 <p>clone the project to your home computer using the following command (with git installed)</p>
 
-<pre><code>git clone https://khufkens@bitbucket.org/khufkens/daymetpy.git
+<pre><code>git clone https://github.com/khufkens/daymetpy.git
 </code></pre>
 
-<p>alternatively, download the project using <a href="https://bitbucket.org/khufkens/daymetpy/get/master.zip">this link</a>.</p>
+<p>or download by hitting the download button and unzip the file.</p>
 
 <p>Next, make the script executable</p>
 
-<pre><code>chmod +x /foo/bar/download.Daymet.py
+<pre><code>chmod +x /foo/bar/daymetpy.py
 </code></pre>
 
 <h2>
 <a id="use" class="anchor" href="#use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use</h2>
 
-<p>For a single site use the following format</p>
+<p>For a single site use the following format in a python script after importing the module:</p>
 
 <pre><code>download_Daymet(site="Oak Ridge National Laboratories",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=2010,internal=TRUE)
 </code></pre>
@@ -91,7 +93,7 @@
 
 <p>In stand alone mode, on a terminal you are restricted to batch mode. Batch mode uses a comma separated file with site names and latitude longitude which are sequentially downloaded. Format of the comma separated file is as such: site name, latitude, longitude.</p>
 
-<pre><code>./download.Daymet.py my_sites_file.csv
+<pre><code>./daymetpy.py my_sites_file.csv
 </code></pre>
       </section>
       <footer>
