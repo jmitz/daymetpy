@@ -7,17 +7,17 @@ Functions to (batch) download single pixel [Daymet data](http://daymet.ornl.gov/
 
 clone the project to your home computer using the following command (with git installed)
 
-	git clone https://khufkens@bitbucket.org/khufkens/daymetpy.git
+	git clone https://github.com/khufkens/daymetpy.git
 
-alternatively, download the project using [this link](https://bitbucket.org/khufkens/daymetpy/get/master.zip).
+or download by hitting the download button and unzip the file.
 
 Next, make the script executable
 
-	chmod +x /foo/bar/download.Daymet.py
+	chmod +x /foo/bar/daymetpy.py
 
 ## Use
 
-For a single site use the following format
+For a single site use the following format in a python script after importing the module:
 
  	download_Daymet(site="Oak Ridge National Laboratories",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=2010,internal=TRUE)
 
@@ -34,4 +34,4 @@ end_yr        | end year of the time series (current year - 2 years / for safety
 
 In stand alone mode, on a terminal you are restricted to batch mode. Batch mode uses a comma separated file with site names and latitude longitude which are sequentially downloaded. Format of the comma separated file is as such: site name, latitude, longitude.
 
-	./download.Daymet.py my_sites_file.csv
+	./daymetpy.py my_sites_file.csv
