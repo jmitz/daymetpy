@@ -1,6 +1,6 @@
 #daymetpy - A Python library for accessing Daymet surface weather data
 
-[![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/khufkens/daymetpy/tree/master/Examples)
+[![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/khufkens/daymetpy)
 
 *Note: daymetpy is very much a work in progress and should considered experimental until a 1.0 release is made!*
 originally forked from https://bitbucket.org/khufkens/daymetpy
