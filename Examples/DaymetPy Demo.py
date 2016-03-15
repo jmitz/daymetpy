@@ -8,9 +8,14 @@
 # 
 # As part of their tools for obtaining data they have created a webservice that allows one to download a timeseries of temperature and precipitation for any location in the US.
 # 
-# functions in pyDaymet allow for painless use of this service
+# Functions in Daymetpy allow for painless use of this service
+# DaymetPy package developed by Koen Hufkens 
+# https://bitbucket.org/khufkens/daymetpy
 
 # In[1]:
+
+import sys
+sys.path.append(r"J:\Projects\NCCSC\phenocam\Tools\DaymetPy")
 
 import daymetpy
 
@@ -18,7 +23,7 @@ import daymetpy
 # In[2]:
 
 ornl_lat, ornl_long = 35.9313167, -84.3104124
-df = daymetpy.download_Daymet(lon=ornl_long, lat=ornl_lat, start_yr=2012, end_yr=2014)
+df = daymetpy.daymet_timeseries(lon=ornl_long, lat=ornl_lat, start_year=2012, end_year=2013)
 
 
 # ### Which gives us a nice data frame with weather data for the Oak Ridge National Lab
@@ -57,18 +62,18 @@ ax2.set_ylabel(u'Precip. (mm)', fontsize=20)
 fig.tight_layout()
 
 
-# # Is the temperature different between Denver and Miami?
+# # And ask questions such as: "What does the difference in temperature between Denver and Miami look like?"
 
-# In[6]:
+# In[8]:
 
 denver_loc = (-104.9903, 39.7392)
 miami_loc = (-80.2089, 25.7753)
 
-denver = daymetpy.download_Daymet(lon=denver_loc[0], lat=denver_loc[1], start_yr=2012, end_yr=2014)
-miami = daymetpy.download_Daymet(lon=miami_loc[0], lat=miami_loc[1], start_yr=2012, end_yr=2014)
+denver = daymetpy.daymet_timeseries(lon=denver_loc[0], lat=denver_loc[1], start_year=2012, end_year=2014)
+miami = daymetpy.daymet_timeseries(lon=miami_loc[0], lat=miami_loc[1], start_year=2012, end_year=2014)
 
 
-# In[7]:
+# In[9]:
 
 fig, ax1 = plt.subplots(1, figsize=(18, 10))
 rolling3day = pd.rolling_mean(denver, 15)
@@ -84,4 +89,9 @@ ax1.fill_between(rolling3day.index, rolling3day.tmin, rolling3day.tmax,
 ax1.set_ylabel(u'Temp. (°C)', fontsize=20)
 fig.tight_layout()
 plt.legend(fontsize=20)
+
+
+# In[ ]:
+
+
 
