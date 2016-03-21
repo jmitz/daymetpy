@@ -61,7 +61,7 @@ def daymet_timeseries(lat=36.0133, lon=-84.2625, start_year=2012, end_year=2014,
         print("File downloaded to:\n{}".format(daymet_file))
 
     # download the daymet data (if available)
-    urllib.urlretrieve(timeseries_url, daymet_file)
+    urlretrieve(timeseries_url, daymet_file)
 
     if os.path.getsize(daymet_file) == 0:
         os.remove(daymet_file)
@@ -110,7 +110,7 @@ def download_Daymet(site="Daymet",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=
         daymet_file = str(site)+"_"+str(start_yr)+"_"+str(end_yr)+'.csv' 
   
         # download the daymet data (if available)
-        urllib.urlretrieve(download_string,daymet_file)
+        urlretrieve(download_string,daymet_file)
 
         if os.path.getsize(daymet_file) == 0:
             os.remove(daymet_file)
