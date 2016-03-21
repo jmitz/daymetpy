@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import print_function
+
 import os
 import sys
 import csv
@@ -45,14 +47,14 @@ def daymet_timeseries(lat=36.0133, lon=-84.2625, start_year=2012, end_year=2014,
     timeseries_url = TIMESERIES_URL.format(lat=lat, lon=lon, year_range=year_range)
       
     if verbose:
-        print "Daymet webservice URL:\n{}".format(timeseries_url)
+        print("Daymet webservice URL:\n{}".format(timeseries_url))
         
     # create filename for the output file
     daymet_file = "Daymet_{}_{}_{}_{}.csv".format(lat, lon, start_year, end_year) 
     daymet_file = os.path.join(download_dname, daymet_file)
     
     if verbose:
-        print "File downloaded to:\n{}".format(daymet_file)
+        print("File downloaded to:\n{}".format(daymet_file))
 
     # download the daymet data (if available)
     urllib.urlretrieve(timeseries_url, daymet_file)
@@ -148,7 +150,7 @@ if __name__ == "__main__":
         try:
             download_Daymet(site=str(site[0]),lat=site[1],lon=site[2],start_yr=1980,end_yr=max_year)
         except NameError:
-            print "Error: check error messages!"
+            print("Error: check error messages!")
             
             # uncomment if you want extensive debugging info
             # raise 
