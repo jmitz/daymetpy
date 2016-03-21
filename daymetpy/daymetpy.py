@@ -6,8 +6,12 @@ import sys
 import csv
 import time
 import datetime
-import urllib
 import tempfile
+
+if sys.version_info[0] == 3:
+    from urllib.request import urlretrieve
+else:
+    from urllib import urlretrieve
 
 class InputError(Exception):
     """Exception raised for errors in the input."""
