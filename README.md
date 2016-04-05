@@ -2,7 +2,7 @@
 
 daymetpy
 =============
-# - A Python library for accessing Daymet surface weather data
+#### - A Python library for accessing Daymet surface weather data
 
 *Note: daymetpy is very much a work in progress and should considered experimental until a 1.0 release is made!*
 originally forked from https://bitbucket.org/khufkens/daymetpy
@@ -23,5 +23,3 @@ seaborn is used in the example notebook to facilitate making attractive outputs
 ## Contributors
 * Koen Hufkens <koen.hufkens@gmail.
 * Colin Talbert <talbertc@usgs.gov.
-
-You can also try the notebooks on your browser with [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/ColinTalbert/DaymetPy)
