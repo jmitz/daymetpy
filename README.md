@@ -1,8 +1,8 @@
 ![build_status](https://travis-ci.org/ColinTalbert/daymetpy.svg?branch=master)
 
-## daymetpy: A Python library for accessing Daymet surface weather data
+## DaymetPy: A python library for accessing Daymet surface weather data
  
-Daymetpy attempts to fill the need for easy, integrated access to gridded daily Daymet weather data.
+DaymetPy attempts to fill the need for easy, integrated access to gridded daily Daymet weather data.
 The data are hosted by the Oak Ridge National Laboratories DAAC and accessed from [their web service](https://daymet.ornl.gov/web_services.html).
 
 ## Installation
