@@ -47,5 +47,5 @@ plt.legend(fontsize=20)
 No additional packages are required. Pandas / seaborn is required in the above example, but not for basic functionality.
 
 ## Contributors
-* Koen Hufkens: koen.hufkens@gmail
+* Koen Hufkens: koen.hufkens@gmail.com
 * Colin Talbert: talbertc@usgs.gov
