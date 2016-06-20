@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>DaymetPy</h1>
-        <p>A python Daymet download script</p>
+        <p>a python library for accessing Daymet surface weather data</p>
 
         <p class="view"><a href="https://github.com/khufkens/daymetpy">View the Project on GitHub <small>khufkens/daymetpy</small></a></p>
 
@@ -28,73 +28,63 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a id="daymetpy" class="anchor" href="#daymetpy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DaymetPy</h1>
+        <p><img src="https://travis-ci.org/ColinTalbert/daymetpy.svg?branch=master" alt="build_status"></p>
 
-<p>forked from <a href="https://bitbucket.org/khufkens/daymetpy">https://bitbucket.org/khufkens/daymetpy</a></p>
+<h2>
+<a id="daymetpy-a-python-library-for-accessing-daymet-surface-weather-data" class="anchor" href="#daymetpy-a-python-library-for-accessing-daymet-surface-weather-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>daymetpy: a python library for accessing Daymet surface weather data</h2>
 
-<p>Functions to (batch) download single pixel <a href="http://daymet.ornl.gov/">Daymet data</a> directly into your python workspace, or save them as csv files on your computer. Both a batch version as a single download version are provided. Consider downloading gridded data if you download extensive coverage within a single region.</p>
+<p>Daymetpy attempts to fill the need for easy, integrated access to gridded daily Daymet weather data.
+The data are hosted by the Oak Ridge National Laboratories DAAC and accessed from <a href="https://daymet.ornl.gov/web_services.html">their web service</a>.</p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>clone the project to your home computer using the following command (with git installed)</p>
+<p>Install the package using <a href="https://en.wikipedia.org/wiki/Pip_(package_manager)">pip</a> and the following command:</p>
 
-<pre><code>git clone https://github.com/khufkens/daymetpy.git
-</code></pre>
-
-<p>or download by hitting the download button and unzip the file.</p>
-
-<p>Next, make the script executable</p>
-
-<pre><code>chmod +x /foo/bar/daymetpy.py
-</code></pre>
+<div class="highlight highlight-source-python"><pre>pip install daymetpy</pre></div>
 
 <h2>
 <a id="use" class="anchor" href="#use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use</h2>
 
-<p>For a single site use the following format in a python script after importing the module:</p>
+<p>Example code to calculate the temperature difference between Denver and Miami is given below. This gives an idea of code functionality and use.</p>
 
-<pre><code>download_Daymet(site="Oak Ridge National Laboratories",lat=36.0133,lon=-84.2625,start_yr=1980,end_yr=2010,internal=TRUE)
-</code></pre>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">import</span> sys
+<span class="pl-k">import</span> daymetpy
+<span class="pl-k">import</span> pandas <span class="pl-k">as</span> pd
+<span class="pl-k">import</span> seaborn <span class="pl-k">as</span> sns
+<span class="pl-k">import</span> matplotlib.pyplot <span class="pl-k">as</span> plt
 
-<p>with the subroutine as found in the script. You can use this subroutine in your own code if needed. This subroutine takes the following parameters.</p>
+denver_loc <span class="pl-k">=</span> (<span class="pl-k">-</span><span class="pl-c1">104.9903</span>, <span class="pl-c1">39.7392</span>)
+miami_loc <span class="pl-k">=</span> (<span class="pl-k">-</span><span class="pl-c1">80.2089</span>, <span class="pl-c1">25.7753</span>)
 
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>site</td>
-<td>site name</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>latitude of the site</td>
-</tr>
-<tr>
-<td>lon</td>
-<td>longitude of the site</td>
-</tr>
-<tr>
-<td>start_yr</td>
-<td>start year of the time series (data start in 1980)</td>
-</tr>
-<tr>
-<td>end_yr</td>
-<td>end year of the time series (current year - 2 years / for safety, tweak this check to reflect the currently available data)</td>
-</tr>
-</tbody>
-</table>
+denver <span class="pl-k">=</span> daymetpy.daymet_timeseries(<span class="pl-v">lon</span><span class="pl-k">=</span>denver_loc[<span class="pl-c1">0</span>], <span class="pl-v">lat</span><span class="pl-k">=</span>denver_loc[<span class="pl-c1">1</span>], <span class="pl-v">start_year</span><span class="pl-k">=</span><span class="pl-c1">2012</span>, <span class="pl-v">end_year</span><span class="pl-k">=</span><span class="pl-c1">2014</span>)
+miami <span class="pl-k">=</span> daymetpy.daymet_timeseries(<span class="pl-v">lon</span><span class="pl-k">=</span>miami_loc[<span class="pl-c1">0</span>], <span class="pl-v">lat</span><span class="pl-k">=</span>miami_loc[<span class="pl-c1">1</span>], <span class="pl-v">start_year</span><span class="pl-k">=</span><span class="pl-c1">2012</span>, <span class="pl-v">end_year</span><span class="pl-k">=</span><span class="pl-c1">2014</span>)
 
-<p>In stand alone mode, on a terminal you are restricted to batch mode. Batch mode uses a comma separated file with site names and latitude longitude which are sequentially downloaded. Format of the comma separated file is as such: site name, latitude, longitude.</p>
+fig, ax1 <span class="pl-k">=</span> plt.subplots(<span class="pl-c1">1</span>, <span class="pl-v">figsize</span><span class="pl-k">=</span>(<span class="pl-c1">18</span>, <span class="pl-c1">10</span>))
+rolling3day <span class="pl-k">=</span> pd.rolling_mean(denver, <span class="pl-c1">15</span>)
+ax1.fill_between(rolling3day.index, rolling3day.tmin, rolling3day.tmax, 
+                 <span class="pl-v">alpha</span><span class="pl-k">=</span><span class="pl-c1">0.4</span>, <span class="pl-v">lw</span><span class="pl-k">=</span><span class="pl-c1">0</span>, <span class="pl-v">label</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>Denver<span class="pl-pds">'</span></span>, <span class="pl-v">color</span><span class="pl-k">=</span>sns.xkcd_palette([<span class="pl-s"><span class="pl-pds">'</span>faded green<span class="pl-pds">'</span></span>])[<span class="pl-c1">0</span>])
+ax1.set_title(<span class="pl-s"><span class="pl-pds">'</span>Denver vs Miami temps (15 day mean)<span class="pl-pds">'</span></span>, <span class="pl-v">fontsize</span><span class="pl-k">=</span><span class="pl-c1">20</span>)
+rolling3day <span class="pl-k">=</span> pd.rolling_mean(miami, <span class="pl-c1">15</span>)
+ax1.fill_between(rolling3day.index, rolling3day.tmin, rolling3day.tmax, 
+                 <span class="pl-v">alpha</span><span class="pl-k">=</span><span class="pl-c1">0.4</span>, <span class="pl-v">lw</span><span class="pl-k">=</span><span class="pl-c1">0</span>, <span class="pl-v">label</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>Miami<span class="pl-pds">'</span></span>, <span class="pl-v">color</span><span class="pl-k">=</span>sns.xkcd_palette([<span class="pl-s"><span class="pl-pds">'</span>dusty purple<span class="pl-pds">'</span></span>])[<span class="pl-c1">0</span>])
+ax1.set_ylabel(<span class="pl-s"><span class="pl-k">u</span><span class="pl-pds">'</span>Temp. (°C)<span class="pl-pds">'</span></span>, <span class="pl-v">fontsize</span><span class="pl-k">=</span><span class="pl-c1">20</span>)
+fig.tight_layout()
+plt.legend(<span class="pl-v">fontsize</span><span class="pl-k">=</span><span class="pl-c1">20</span>)</pre></div>
 
-<pre><code>./daymetpy.py my_sites_file.csv
-</code></pre>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>No additional packages are required. Pandas / seaborn is required in the above example, but not for basic functionality.</p>
+
+<h2>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributors</h2>
+
+<ul>
+<li>Koen Hufkens: koen.hufkens@gmail</li>
+<li>Colin Talbert: <a href="mailto:talbertc@usgs.gov">talbertc@usgs.gov</a>
+</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/khufkens">khufkens</a></p>
