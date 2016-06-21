@@ -15,7 +15,7 @@ pip install daymetpy
 
 ## Use
 
-Example code to calculate the temperature difference between Denver and Miami is given below. This gives an idea of code functionality and use.
+Example code to calculate the temperature difference between Denver and Miami is given below. This gives an idea of code functionality and use. A worked example in an ipython notebook format can be found in the 'example' subdirectory.
 
 ```python
 import sys
